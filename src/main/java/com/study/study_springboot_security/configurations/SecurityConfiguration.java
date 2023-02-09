@@ -9,12 +9,14 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
+        // None using csrf protection
+        httpSecurity.csrf().disable(); // 사용이 안 되도록 함
         // 권한에 대한 부분 : url & roles : user url & roles 비교
         httpSecurity.authorizeRequests()
             // .antMatchers("/").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-            .antMatchers("/").authenticated() // 로그인 여부만 판단
-            .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
-            .anyRequest().permitAll(); // 설정한 URL 이외에 접근 가능
+            // .antMatchers("/").authenticated() // 로그인 여부만 판단
+            .antMatchers("/admin").authenticated()
+            .anyRequest().permitAll(); // 설정한 URL 이외에 접근 가능(로그인 & 로그아웃)
             
             // 로그인에 대한 부분
             httpSecurity.formLogin().loginPage("/loginForm")
