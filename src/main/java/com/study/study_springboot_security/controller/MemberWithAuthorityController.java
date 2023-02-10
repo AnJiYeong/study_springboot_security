@@ -13,6 +13,7 @@ import com.study.study_springboot_security.services.MemberWithAuthorityService;
 
 @Controller
 public class MemberWithAuthorityController {
+
     @Autowired
     MemberWithAuthorityService memberWithAuthorityService;
 

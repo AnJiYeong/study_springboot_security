@@ -18,7 +18,7 @@
             <p>
                 <label for="username" class="sr-only">Username ID</label>
                 <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
-                    autofocus="" value="test01">
+                    autofocus="" value="test_01">
             </p>
             <p>
                 <label for="password" class="sr-only">Password</label>

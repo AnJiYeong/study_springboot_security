@@ -21,6 +21,7 @@ public class MainController {
 
         String viewName = "/WEB-INF/views/main.jsp";
         modelAndView.setViewName(viewName);
+
         return modelAndView;
     }
     

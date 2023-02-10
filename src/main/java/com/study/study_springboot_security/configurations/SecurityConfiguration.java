@@ -5,14 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-
 @Configuration
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         // None using csrf protection
-        httpSecurity.csrf().disable(); // 사용이 안 되도록 함
+        httpSecurity.csrf().disable();
         // 권한에 대한 부분 : url & roles : user url & roles
         // url, roles from Dao
         httpSecurity.authorizeRequests()
@@ -23,6 +21,7 @@ public class SecurityConfiguration {
         
         // 로그인에 대한 부분
         httpSecurity.formLogin().loginPage("/loginForm")
+            .failureUrl("/loginForm?fail=true")
             .loginProcessingUrl("/login")
             .defaultSuccessUrl("/");
 
@@ -33,5 +32,4 @@ public class SecurityConfiguration {
     public BCryptPasswordEncoder encoderPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
