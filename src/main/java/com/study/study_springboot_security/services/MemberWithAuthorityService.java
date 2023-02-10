@@ -1,9 +1,17 @@
 package com.study.study_springboot_security.services;
 
-import com.study.study_springboot_security.daos.sharedDao;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.study.study_springboot_security.daos.SharedDao;
 
 public class MemberWithAuthorityService {
-    String sqlMapId = "Memberwithauthority.insertWithUID";
-    Object result = sharedDao.insert(sqlMapId, dataMap);
-    return result;
+
+    @Autowired
+    SharedDao sharedDao;
+
+    public Object insert(Object dataMap){
+        String sqlMapId = "Memberwithauthority.insertWithUID";
+        Object result = sharedDao.insert(sqlMapId, dataMap);
+        return result;
+    }
 }

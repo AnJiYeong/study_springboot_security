@@ -9,12 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberWithAuthorityController {
     @RequestMapping(value = "/joinForm", method = RequestMethod.GET)
     public ModelAndView joinForm(ModelAndView modelAndView){
-        String viewName = "/WEB-INF/views//member/joinForm.jsp";
+        String viewName = "/WEB-INF/views/member/joinForm.jsp";
 
         modelAndView.setViewName(viewName);
         return modelAndView;
     }
-    @RequestMapping(value = "/joinForm", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/joinProc", method = RequestMethod.POST)
     public String joinProc(ModelAndView modelAndView){
         return "redirect:/";
     }
